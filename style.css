@@ -1,0 +1,136 @@
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --text: #172033;
+  --muted: #7b8498;
+  --line: #e8ebf2;
+  --primary: #6558e8;
+  --primary-dark: #5043cf;
+  --primary-soft: #f0efff;
+  --green: #159b72;
+  --green-soft: #e8f8f1;
+  --red: #df5a69;
+  --red-soft: #fff0f1;
+  --shadow: 0 22px 70px rgba(42, 51, 85, .08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 15% 12%, #efedff 0, transparent 27%), radial-gradient(circle at 88% 75%, #e8f7fb 0, transparent 26%), var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+}
+button { font: inherit; }
+.app-shell { width: min(100% - 40px, 1060px); margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
+.topbar { height: 88px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(220,224,237,.8); }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font: 800 23px "Manrope", sans-serif; letter-spacing: -1px; }
+.brand-mark { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px; background: var(--primary); color: white; font-size: 20px; box-shadow: 0 6px 15px #6558e84a; }
+.brand-dot { color: var(--primary); }
+.topbar-right { display: flex; align-items: center; gap: 8px; color: #687188; font-size: 13px; font-weight: 600; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #24bc8b; box-shadow: 0 0 0 4px #24bc8b20; }
+main { flex: 1; display: flex; flex-direction: column; }
+.intro { position: relative; overflow: hidden; padding: 78px 7% 84px; margin: 38px 0 35px; border-radius: 28px; background: linear-gradient(120deg, #fff 0%, #fbfbff 62%, #f1f0ff 100%); box-shadow: var(--shadow); border: 1px solid #fff; }
+.eyebrow { display: flex; align-items: center; gap: 8px; color: var(--primary); font-size: 11px; letter-spacing: 1.7px; font-weight: 800; }
+.sparkle { font-size: 17px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { position: relative; z-index: 1; margin: 22px 0 17px; font: 800 clamp(42px, 6vw, 66px)/1.1 "Manrope", sans-serif; letter-spacing: -3.5px; }
+h1 span { color: var(--primary); }
+.intro-copy { position: relative; z-index: 1; max-width: 475px; color: #737d93; line-height: 1.8; font-size: 16px; margin-bottom: 26px; }
+.intro-meta { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 32px; color: #687188; font-size: 12px; font-weight: 600; }
+.meta-icon { color: var(--primary); font-size: 16px; margin-right: 5px; }
+.button { border: 0; border-radius: 12px; padding: 13px 19px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; font-size: 13px; font-weight: 700; cursor: pointer; transition: transform .18s, box-shadow .18s, background .18s; }
+.button:hover:not(:disabled) { transform: translateY(-2px); }
+.button:focus-visible, .option:focus-visible { outline: 3px solid #a7a0ff; outline-offset: 3px; }
+.button-primary { color: white; background: var(--primary); box-shadow: 0 9px 20px #6558e832; }
+.button-primary:hover:not(:disabled) { background: var(--primary-dark); box-shadow: 0 12px 24px #6558e842; }
+.start-button { min-width: 155px; }
+.button-quiet { background: #f2f3f8; color: #69738a; }
+.button:disabled { opacity: .42; cursor: not-allowed; box-shadow: none; }
+.intro-decoration { position: absolute; border-radius: 50%; pointer-events: none; }
+.decoration-one { width: 300px; height: 300px; right: -78px; top: -115px; border: 1px solid #d8d4ff; box-shadow: 0 0 0 25px #f4f2ff, 0 0 0 55px #f8f7ff; }
+.decoration-two { width: 180px; height: 180px; right: 75px; bottom: -128px; background: #e9e7ff; opacity: .6; }
+.hidden { display: none !important; }
+.quiz-panel, .result-panel { width: min(100%, 800px); margin: 45px auto; padding: clamp(22px, 5vw, 46px); border-radius: 25px; background: var(--surface); box-shadow: var(--shadow); border: 1px solid #fff; }
+.quiz-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 23px; }
+.quiz-heading h2, .result-panel h2 { margin: 8px 0 0; font: 800 27px "Manrope", sans-serif; letter-spacing: -1px; }
+.question-counter { display: flex; align-items: baseline; gap: 5px; font: 800 21px "Manrope", sans-serif; }
+.question-counter span:first-child { color: var(--primary); }
+.counter-divider, #totalNumber { color: #b5bac8; font-size: 14px; }
+.progress-track { height: 7px; background: #eff0f7; border-radius: 20px; overflow: hidden; margin-bottom: 32px; }
+.progress-fill { width: 10%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #6558e8, #a29aff); transition: width .3s ease; }
+.question-card { padding: 25px; border: 1px solid var(--line); border-radius: 18px; }
+.question-topline { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.question-tag, .points-tag { font-size: 10px; font-weight: 800; letter-spacing: 1px; }
+.question-tag { color: var(--primary); background: var(--primary-soft); padding: 7px 10px; border-radius: 7px; }
+.points-tag { color: #9ba2b2; letter-spacing: .3px; }
+.question-card h3 { margin: 23px 0 8px; font: 700 21px/1.5 "Manrope", sans-serif; letter-spacing: -.5px; }
+.question-instruction { margin-bottom: 20px; color: var(--muted); font-size: 12px; }
+.options-list { display: grid; gap: 11px; }
+.option { display: flex; align-items: center; gap: 13px; width: 100%; min-height: 57px; text-align: left; border: 1px solid #e8eaf2; border-radius: 12px; padding: 12px 15px; background: #fff; color: #4c566c; cursor: pointer; transition: .18s ease; }
+.option:hover { border-color: #b9b3ff; background: #fbfaff; }
+.option.selected { border-color: var(--primary); background: #f7f6ff; color: #302b79; box-shadow: 0 0 0 2px #6558e812; }
+.option-letter { flex: 0 0 29px; height: 29px; display: grid; place-items: center; border-radius: 9px; background: #f2f3f8; color: #8790a4; font-size: 11px; font-weight: 800; }
+.option.selected .option-letter { background: var(--primary); color: white; }
+.option-text { font-size: 13px; line-height: 1.5; font-weight: 600; }
+.option-check { margin-left: auto; color: var(--primary); font-size: 17px; opacity: 0; }
+.option.selected .option-check { opacity: 1; }
+.quiz-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 23px; }
+.answered-count { color: #9299aa; font-size: 11px; font-weight: 600; text-align: center; }
+.keyboard-hint { margin: 20px 0 0; text-align: center; color: #a0a6b5; font-size: 11px; }
+.result-panel { text-align: center; }
+.result-icon { display: grid; place-items: center; width: 62px; height: 62px; margin: 0 auto 22px; border-radius: 20px; background: var(--primary-soft); color: var(--primary); font-size: 28px; }
+.result-panel .eyebrow { justify-content: center; }
+.result-panel h2 { font-size: 32px; margin-top: 12px; }
+.result-copy { color: var(--muted); font-size: 14px; line-height: 1.7; margin: 12px auto 26px; max-width: 460px; }
+.score-card { display: flex; align-items: center; justify-content: center; gap: clamp(25px, 6vw, 70px); max-width: 510px; margin: 0 auto 35px; padding: 27px; background: #fafaff; border: 1px solid #efeffb; border-radius: 19px; }
+.score-ring { width: 138px; height: 138px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--primary) 0deg, #e9e8f7 0deg); position: relative; flex-shrink: 0; }
+.score-ring::before { content: ""; position: absolute; inset: 9px; border-radius: 50%; background: #fafaff; }
+.score-ring > div { position: relative; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.score-ring strong { font: 800 31px "Manrope", sans-serif; letter-spacing: -1px; }
+.score-ring span { color: #999fb1; font-size: 8px; font-weight: 800; letter-spacing: 1px; }
+.score-details { display: grid; gap: 17px; min-width: 175px; text-align: left; }
+.score-detail { display: grid; grid-template-columns: 9px 1fr auto; align-items: center; gap: 9px; color: #777f92; font-size: 12px; }
+.score-detail strong { color: var(--text); font-size: 14px; }
+.detail-dot { width: 8px; height: 8px; border-radius: 50%; }
+.correct-dot { background: var(--green); } .wrong-dot { background: var(--red); } .unanswered-dot { background: #b5bbca; }
+.review-block { text-align: left; margin: 0 0 28px; }
+.review-heading { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 13px; }
+.review-heading h3 { margin: 0; font: 800 17px "Manrope", sans-serif; }
+.review-heading span { color: #9ba2b2; font-size: 11px; }
+.review-list { display: grid; gap: 10px; }
+.review-item { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.review-item.review-correct { border-left: 3px solid var(--green); }
+.review-item.review-wrong { border-left: 3px solid var(--red); }
+.review-item.review-unanswered { border-left: 3px solid #b5bbca; }
+.review-question { margin: 0 0 8px; font-size: 12px; font-weight: 700; line-height: 1.6; }
+.review-answer, .review-correct-answer { margin: 3px 0 0; font-size: 11px; color: #7d8699; line-height: 1.6; }
+.review-correct-answer strong { color: var(--green); }
+.review-answer strong { color: #485168; }
+.restart-button { min-width: 160px; }
+.site-footer { display: flex; justify-content: space-between; gap: 12px; padding: 23px 0; color: #9aa1b1; font-size: 11px; }
+.footer-heart { color: #ed8292; }
+@media (max-width: 640px) {
+  .app-shell { width: min(100% - 24px, 1060px); }
+  .topbar { height: 70px; }
+  .brand { font-size: 21px; }
+  .intro { margin: 22px 0; padding: 49px 25px 53px; border-radius: 22px; }
+  h1 { font-size: clamp(42px, 12vw, 58px); letter-spacing: -2.5px; }
+  .intro-copy { font-size: 14px; }
+  .intro-meta { gap: 12px; flex-direction: column; }
+  .decoration-one { right: -200px; opacity: .7; }
+  .decoration-two { right: -15px; }
+  .quiz-panel, .result-panel { margin: 22px auto; padding: 22px 16px; border-radius: 20px; }
+  .quiz-heading h2 { font-size: 23px; }
+  .question-card { padding: 17px 13px; }
+  .question-card h3 { font-size: 18px; }
+  .quiz-footer { display: grid; grid-template-columns: 1fr 1fr; }
+  .answered-count { grid-column: 1 / -1; grid-row: 1; }
+  .quiz-footer .button { padding: 12px 10px; gap: 6px; font-size: 11px; }
+  .score-card { flex-direction: column; gap: 25px; padding: 23px 14px; }
+  .score-details { width: 100%; max-width: 230px; }
+  .result-panel h2 { font-size: 28px; }
+  .site-footer { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
